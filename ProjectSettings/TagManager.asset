@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - cell
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - galho
+  - player
+  - cell
+  - wall
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 155407429
+    locked: 0
+  - name: back1
+    uniqueID: 3289676613
+    locked: 0
+  - name: Player
+    uniqueID: 3787818031
+    locked: 0
+  - name: front1
+    uniqueID: 1753377773
+    locked: 0
+  - name: Walls
+    uniqueID: 1569367559
+    locked: 0
+  - name: fx
+    uniqueID: 3857922727
+    locked: 0
+  m_RenderingLayers:
+  - Default
