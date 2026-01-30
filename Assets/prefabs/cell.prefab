@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellState: 0
-  lifeCountdown: 20
+  lifeCountdown: 50
   cellID: 0
   cg: {fileID: 0}
   ani: {fileID: 397415284589734264}

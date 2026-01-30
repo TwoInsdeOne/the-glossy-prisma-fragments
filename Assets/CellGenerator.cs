@@ -7,17 +7,6 @@ public class CellGenerator : MonoBehaviour
     public bool cellPresent;
     public Animator ani;
     public Transform galho;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void GenerateCell()
     {

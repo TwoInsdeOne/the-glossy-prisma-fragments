@@ -59,4 +59,8 @@ public class CellController : MonoBehaviour
         }
         bag.GetChild(cellID).SetParent(GameObject.Find("Released Cells").transform, true);
     }
+    public int GetCellCount()
+    {
+        return bag.childCount;
+    }
 }

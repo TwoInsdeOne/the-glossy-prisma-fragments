@@ -33,9 +33,7 @@ public class CellLifeCycle : MonoBehaviour
 
         if(lifeCountdown < 0 && cellState == CellState.active)
         {
-            transform.parent.parent.GetComponent<CellController>().ReleaseCell(GetCellID());
-            ani.SetTrigger("dying");
-            cellState = CellState.used;
+            Release();
         }
         if(cellState == CellState.used) {
             trailWidthAfterDying -= Time.deltaTime;
@@ -48,6 +46,12 @@ public class CellLifeCycle : MonoBehaviour
     {
         cg.CollectCell();
         cellState = CellState.active;
+    }
+    public void Release()
+    {
+        transform.parent.parent.GetComponent<CellController>().ReleaseCell(GetCellID());
+        ani.SetTrigger("dying");
+        cellState = CellState.used;
     }
     public int GetCellID()
     {
