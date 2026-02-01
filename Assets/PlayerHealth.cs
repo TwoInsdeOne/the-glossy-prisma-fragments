@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -33,5 +34,32 @@ public class PlayerHealth : MonoBehaviour
             bfx.transform.position = collision.GetContact(0).point;
             shaker.StartShake(shaker.timer, shaker.str, false);
         }
+        if (collision.gameObject.tag == "laser")
+        {
+            if (cellController.GetCellCount() > 0)
+            {
+                cellController.bag.GetChild(0).GetComponent<CellLifeCycle>().Release();
+
+            }
+            float sin_a = Mathf.Sin(Mathf.Atan2(transform.position.y - collision.transform.position.y, transform.position.x - collision.transform.position.x));
+            float sin_b = Mathf.Sin(Mathf.Deg2Rad * collision.transform.eulerAngles.z);
+            float dsin = sin_a - sin_b;
+            float angle = (collision.transform.eulerAngles.z + (dsin < 0 ? -90 : 90)) * Mathf.Deg2Rad;
+
+
+            Vector2 direction = (new Vector2(Mathf.Cos(angle), Mathf.Sin(angle))).normalized;
+            rb.AddForce(direction * knockbackSpeed, ForceMode2D.Impulse);
+            
+            GameObject bfx = Instantiate(bloodFX);
+            bfx.transform.position = collision.GetContact(0).point;
+            
+
+            shaker.StartShake(shaker.timer, shaker.str, false);
+        }
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
     }
 }

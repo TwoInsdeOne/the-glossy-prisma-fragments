@@ -6,6 +6,7 @@ TagManager:
   tags:
   - cell
   - triangle
+  - laser
   layers:
   - Default
   - TransparentFX
