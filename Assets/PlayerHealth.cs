@@ -8,6 +8,9 @@ public class PlayerHealth : MonoBehaviour
     public float knockbackSpeed;
     public GameObject bloodFX;
     public Shake shaker;
+    public Animator ani;
+    public float damageCD;
+    private float damageCD_;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,11 +20,16 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(damageCD_ > 0)
+        {
+            
+            damageCD_ -= Time.deltaTime;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "triangle")
+
+        if(collision.gameObject.tag == "triangle" && damageCD_ <= 0)
         {
             if (cellController.GetCellCount() > 0)
             {
@@ -33,8 +41,10 @@ public class PlayerHealth : MonoBehaviour
             GameObject bfx = Instantiate(bloodFX);
             bfx.transform.position = collision.GetContact(0).point;
             shaker.StartShake(shaker.timer, shaker.str, false);
+            ani.SetBool("take damage", true);
+            damageCD_ = damageCD;
         }
-        if (collision.gameObject.tag == "laser")
+        if (collision.gameObject.tag == "laser" && damageCD_ <= 0)
         {
             if (cellController.GetCellCount() > 0)
             {
@@ -54,12 +64,18 @@ public class PlayerHealth : MonoBehaviour
             bfx.transform.position = collision.GetContact(0).point;
             
 
-            shaker.StartShake(shaker.timer, shaker.str, false);
+            shaker.StartShake(shaker.timer, shaker.str, true);
+            ani.SetBool("take damage", true);
+            damageCD_ = damageCD;
         }
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
+    }
+    public void ResetAnimatorBool()
+    {
+        ani.SetBool("take damage", false);
     }
 }

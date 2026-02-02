@@ -12,11 +12,7 @@ public class SetController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     public void EnableAll()
     {
         for (int i = 0; i < transform.childCount; i++)

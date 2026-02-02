@@ -24,11 +24,11 @@ public class CellLifeCycle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (cellState == CellState.active)
         {
-            lifeCountdown -= Time.deltaTime;
+            lifeCountdown -= Time.fixedDeltaTime;
         }
 
         if(lifeCountdown < 0 && cellState == CellState.active)
@@ -36,7 +36,7 @@ public class CellLifeCycle : MonoBehaviour
             Release();
         }
         if(cellState == CellState.used) {
-            trailWidthAfterDying -= Time.deltaTime;
+            trailWidthAfterDying -= Time.fixedDeltaTime;
             
             tr.widthMultiplier = Mathf.Max(trailWidthAfterDying,0);
         }

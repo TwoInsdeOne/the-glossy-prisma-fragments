@@ -7,17 +7,16 @@ public class AssignRandomColor : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).GetComponent<SpriteRenderer>().color = RandomColor();
+            Transform t = transform.GetChild(i);
+            if (t.GetComponent<SpriteRenderer>() != null)
+            {
+                t.GetComponent<SpriteRenderer>().color = RandomColor();
+            }
+            
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     public Color RandomColor()
     {
-        return new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.3f, 0.8f));
+        return new Color(Random.Range(0.4f, 0.8f), Random.Range(0.4f, 0.8f), Random.Range(0.5f, 1f), Random.Range(0.5f, 0.8f));
     }
 }

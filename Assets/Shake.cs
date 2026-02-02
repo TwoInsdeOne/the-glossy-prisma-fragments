@@ -38,6 +38,8 @@ public class Shake : MonoBehaviour
     {
         if(shakeJoystick && Gamepad.current != null)
         {
+            Debug.Log("gamepad present");
+            
             Gamepad.current.SetMotorSpeeds(0.3f, 0.3f);
         }
 
