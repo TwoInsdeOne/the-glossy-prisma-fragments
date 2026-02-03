@@ -4930,6 +4930,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7716724109357388489}
   - component: {fileID: 3368140871801927115}
+  - component: {fileID: -7323597161963834232}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: triangle
@@ -4975,6 +4976,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-7323597161963834232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691340340639521170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a44723a29a8cbb46a164c4ce9a4ee61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 0
+  ani: {fileID: 3368140871801927115}
+  started: 0
 --- !u!1 &5224698497384873625
 GameObject:
   m_ObjectHideFlags: 0
@@ -5096,7 +5112,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -5117,7 +5133,7 @@ MonoBehaviour:
   m_ShadowGroup: 0
   m_Priority: 0
   m_ComponentVersion: 5
-  m_HasRenderer: 0
+  m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
@@ -5145,10 +5161,10 @@ MonoBehaviour:
     m_FlipY: 0
     m_InitialTrim: 0.07
   m_CastingOption: 1
-  m_PreviousTrimEdge: 0
-  m_PreviousEdgeProcessing: -1
-  m_PreviousShadowCastingSource: -1
-  m_PreviousShadowShape2DSource: {fileID: 0}
+  m_PreviousTrimEdge: 0.07
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 2
+  m_PreviousShadowShape2DSource: {fileID: 6472613524113402529}
   references:
     version: 2
     RefIds:

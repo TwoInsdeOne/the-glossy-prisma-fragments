@@ -29,17 +29,28 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if(collision.gameObject.tag == "triangle" && damageCD_ <= 0)
+        
+        
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "triangle" && damageCD_ <= 0)
         {
             if (cellController.GetCellCount() > 0)
             {
                 cellController.bag.GetChild(0).GetComponent<CellLifeCycle>().Release();
-                
+
             }
             Vector2 direction = (transform.position - collision.transform.position).normalized;
             rb.AddForce(direction * knockbackSpeed, ForceMode2D.Impulse);
+
             GameObject bfx = Instantiate(bloodFX);
-            bfx.transform.position = collision.GetContact(0).point;
+            float p = (GetComponent<CircleCollider2D>().radius*transform.localScale.x)/(collision.transform.position - transform.position).magnitude;
+            Vector3 midPoint = transform.position*(1 - p) + collision.transform.position*p;
+            bfx.transform.position = midPoint;
+
+
             shaker.StartShake(shaker.timer, shaker.str, false);
             ani.SetBool("take damage", true);
             damageCD_ = damageCD;
@@ -59,20 +70,16 @@ public class PlayerHealth : MonoBehaviour
 
             Vector2 direction = (new Vector2(Mathf.Cos(angle), Mathf.Sin(angle))).normalized;
             rb.AddForce(direction * knockbackSpeed, ForceMode2D.Impulse);
-            
+
             GameObject bfx = Instantiate(bloodFX);
-            bfx.transform.position = collision.GetContact(0).point;
-            
+            float radius = GetComponent<CircleCollider2D>().radius * transform.localScale.x;
+            bfx.transform.position = new Vector3(Mathf.Cos(angle - Mathf.PI)*radius, Mathf.Sin(angle - Mathf.PI) * radius, 0) + transform.position;
+
 
             shaker.StartShake(shaker.timer, shaker.str, true);
             ani.SetBool("take damage", true);
             damageCD_ = damageCD;
         }
-
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
     }
     public void ResetAnimatorBool()
     {
